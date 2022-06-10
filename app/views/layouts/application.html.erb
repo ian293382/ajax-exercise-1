@@ -12,6 +12,22 @@
 
   <body>
     <div class="container">
+      <% if flash[:notice] %>
+        <%= flash[:notice] %>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <%= flash[:alert] %>
+      <% end %>
+
+      <% if current_user %>
+        <%= link_to('log out', destroy_session_path, :method => :delete) %>
+        <%= link_to('change Passwrod', edit_registration_path(:user)) %>
+      <% else %>
+        <%= link_to('registration', new_registration_path(:user)) %>|
+        <%= link_to('Log in', new_session_path(:user)) %>
+      <% end %>
+      
     <%= link_to "JQuery Paratices 1", jquery_1_path %>  |
     <%= link_to "JQuery Paratices 2", jquery_2_path %>  |
     <%= link_to "JQuery Paratices 3", jquery_3_path %>  |
