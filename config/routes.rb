@@ -11,6 +11,12 @@ get "/jquery-5" => "pages#jquery_5"
 
 root "posts#index"
 
-resources :posts
+   resources :posts do
+     member do
+       post "like" => "posts#like"
+       post "unlike" => "posts#unlike"
+     end
+   end
+
 
 end
