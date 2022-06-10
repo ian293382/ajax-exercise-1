@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   def display_name
     ## 取email前排來顯示
-    self.email.split("@").first
+   self.email.split("@").first
   end
-  
+
 end
