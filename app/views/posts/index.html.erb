@@ -18,7 +18,8 @@
 
 <script>
    // 這會綁 click 事件到所有有 `.delete-post` class 的元素上，也就是所有的刪除按鈕
-   $(".delete-post").click(function(evt){
+   $("#post-list").on('click', ".delete-post", function(evt){
+
      // `evt` 是瀏覽器的事件物件，evt.preventDefault(); 會終止這個元素的預設行為：
      // 超連結 a 的預設行為是跳到下一頁，如果沒有這行的話，送出 ajax 後會跳去 show page
      evt.preventDefault();
@@ -31,7 +32,7 @@
         method: 'DELETE',
         dataType: 'json', // 要求伺服器回傳 json
         success: function(data){   // data 就是伺服器回傳的 JSON 資料
-          $("#post-" + data["id"]).remove();
+          $("#post-list").on('change', ".toggle-flag", function(){
         }
       })
    })
