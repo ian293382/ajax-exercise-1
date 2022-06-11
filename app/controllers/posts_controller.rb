@@ -24,7 +24,6 @@ class PostsController < ApplicationController
        Like.create( :user => current_user, :post => @post)
      end
 
-     redirect_to posts_path
    end
 
    def unlike
@@ -32,9 +31,9 @@ class PostsController < ApplicationController
      like = @post.find_like(current_user)
      like.destroy
 
-     redirect_to posts_path
+     render "like"
    end
- 
+
 
   protected
 
