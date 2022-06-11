@@ -37,3 +37,25 @@
    })
 
 </script>
+
+
+<script>
+  //紀錄畫面最小的貼文id
+  $(window).scroll(function(){
+    //當捲到最下面時
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      var url = "/posts?max_id=" + current_post_id;
+      if (url) {
+        $.ajax({
+          method: "GET",
+          url: url,
+          dataType: "script"
+        })
+      } else {
+        console.log("data ended")
+      }
+    }
+  })
+
+
+</script>
