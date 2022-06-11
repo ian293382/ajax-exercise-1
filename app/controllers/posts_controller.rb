@@ -17,7 +17,9 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id]) # 只能刪除自己的貼文
     @post.destroy
 
+      render :json => { :id => @post.id }
   end
+
   def like
      @post = Post.find(params[:id])
      unless @post.find_like(current_user)  # 如果已經按讚過了，就略過不再新增
