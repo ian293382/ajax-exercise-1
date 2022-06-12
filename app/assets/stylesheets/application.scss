@@ -13,5 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
-//=require jquery.raty
+ 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "jquery.raty";
