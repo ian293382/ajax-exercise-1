@@ -25,6 +25,7 @@
      evt.preventDefault();
       // this 是個特別的變數，代表觸發事件的元素。使用 attr 可以讀取元素的屬性，這裡要拿到超連結的網址
       var url = $(this).attr("href");
+      var that = this;
 
       // 送出 Ajax
       $.ajax({
@@ -32,7 +33,7 @@
         method: 'DELETE',
         dataType: 'json', // 要求伺服器回傳 json
         success: function(data){   // data 就是伺服器回傳的 JSON 資料
-          $("#post-list").on('change', ".toggle-flag", function(){
+          $(that).closest(".panel").remove();
         }
       })
    })
@@ -85,6 +86,7 @@
  <script>
    $("#post-list").on('change', ".select_category", function(){
      var url = $(this).data("url");
+     var that = this;
 
     $.ajax({
        url: url,
@@ -94,7 +96,13 @@
          post: {
            category_id: $(this).val()
          }
-       }
+       },
+        beforeSend: function(){
+          $(that).after( $(' <img src="/images/ajax-loader.gif" id="ajax-loading"> ') );
+        },
+        complete: function(){
+          $("#ajax-loading").remove();
+        }
      });
    });
   </script>
